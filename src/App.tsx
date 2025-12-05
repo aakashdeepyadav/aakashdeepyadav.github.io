@@ -3,6 +3,7 @@ function App() {
     <>
       <h1>Portfolio</h1>
       <h2>-This my portfolio website</h2>
+      <h3>COMING SOON...</h3>
     </>
   );
 }
