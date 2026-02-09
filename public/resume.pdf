@@ -1,0 +1,121 @@
+%PDF-1.4
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Kids [3 0 R]
+/Count 1
+>>
+endobj
+3 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/Resources <<
+/Font <<
+/F1 4 0 R
+>>
+>>
+/MediaBox [0 0 612 792]
+/Contents 5 0 R
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+endobj
+5 0 obj
+<<
+/Length 1200
+>>
+stream
+BT
+/F1 24 Tf
+50 750 Td
+(AAKASH DEEP YADAV) Tj
+0 -40 Td
+/F1 12 Tf
+(aakashdeepyadav106@gmail.com | github.com/aakashdeepyadav | linkedin.com/in/aakashdeepyadav) Tj
+0 -50 Td
+/F1 14 Tf
+(PROFESSIONAL SUMMARY) Tj
+0 -20 Td
+/F1 11 Tf
+(Full Stack Developer and AI enthusiast with 2+ years of experience building production-grade applications.) Tj
+0 -15 Td
+(Specialized in React, Node.js, Python, and Machine Learning. Currently pursuing B.Tech in Computer Science.) Tj
+0 -40 Td
+/F1 14 Tf
+(TECHNICAL SKILLS) Tj
+0 -20 Td
+/F1 11 Tf
+(Languages: Python, JavaScript, TypeScript, C, C++, Java, SQL) Tj
+0 -15 Td
+(Frontend: React, HTML5, CSS3, Tailwind CSS, Framer Motion) Tj
+0 -15 Td
+(Backend: Node.js, Express.js, Flask, FastAPI, REST APIs) Tj
+0 -15 Td
+(AI/ML: Pandas, NumPy, Scikit-Learn, Machine Learning, Model Training) Tj
+0 -15 Td
+(Databases: MongoDB, MySQL, Firebase, Firestore) Tj
+0 -15 Td
+(Tools: Git, GitHub, Docker, VSCode, Postman) Tj
+0 -40 Td
+/F1 14 Tf
+(KEY PROJECTS) Tj
+0 -20 Td
+/F1 11 Tf
+(Student Career Recommendation System) Tj
+0 -12 Td
+(ML-powered career recommendation platform with KMeans++ clustering) Tj
+0 -12 Td
+(Achieved Silhouette Score of 0.82 across 25+ career profiles) Tj
+0 -15 Td
+(Shared Expense Tracker) Tj
+0 -12 Td
+(Real-time group expense tracking with Firebase and React) Tj
+0 -12 Td
+(90% reduction in manual reconciliation effort) Tj
+0 -40 Td
+/F1 14 Tf
+(CERTIFICATIONS & TRAINING) Tj
+0 -20 Td
+/F1 11 Tf
+(Agentic AI Application Training - Programming Pathshala) Tj
+0 -15 Td
+(DSA & Problem Solving - 100+ LeetCode problems solved) Tj
+0 -40 Td
+/F1 14 Tf
+(EDUCATION) Tj
+0 -20 Td
+/F1 11 Tf
+(B.Tech Computer Science and Engineering) Tj
+0 -12 Td
+(Lovely Professional University Punjab, India (2023 - Present)) Tj
+ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000244 00000 n 
+0000000322 00000 n 
+trailer
+<<
+/Size 6
+/Root 1 0 R
+>>
+startxref
+1572
+%%EOF
