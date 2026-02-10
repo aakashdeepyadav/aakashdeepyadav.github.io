@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, ArrowRight, Download, Sparkles, Code, Zap } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowRight, Download, Code, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import profileImage from "../assets/aakash.jpg";
 
@@ -46,17 +46,6 @@ const Hero = () => {
         <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-16 items-center">
           {/* Left */}
           <div>
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 mb-8"
-            >
-              <Sparkles size={14} className="text-cyan-400" />
-              <span className="text-xs font-medium text-cyan-400 tracking-wide">Available for opportunities</span>
-            </motion.div>
-
             {/* Name */}
             <motion.h1
               className="text-5xl sm:text-6xl lg:text-[4.5rem] font-extrabold leading-[1.05] tracking-tight mb-2"

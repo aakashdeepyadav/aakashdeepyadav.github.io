@@ -68,7 +68,7 @@ const Experience = () => {
                         <span>🎓</span> B.Tech — Computer Science
                       </h4>
                       <span className="text-xs text-slate-500 flex items-center gap-1 whitespace-nowrap px-2 py-0.5 rounded-md bg-slate-800/60 border border-slate-700/30">
-                        <Calendar size={11} /> 2022 – 2026
+                        <Calendar size={11} /> 2023 – Present
                       </span>
                     </div>
                     <p className="text-sm text-cyan-400 font-medium mb-1">Lovely Professional University</p>
