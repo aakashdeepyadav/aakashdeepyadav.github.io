@@ -1,137 +1,94 @@
 import { Github, Linkedin, Mail, Heart, ArrowUp } from "lucide-react";
 import { motion } from "framer-motion";
 
+const links = [
+  { label: "GitHub", href: "https://github.com/aakashdeepyadav", icon: Github },
+  { label: "LinkedIn", href: "https://linkedin.com/in/aakashdeepyadav", icon: Linkedin },
+  { label: "Email", href: "mailto:aakashdeepyadav106@gmail.com", icon: Mail },
+];
+
+const nav = [
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Experience", href: "#experience" },
+  { label: "Contact", href: "#contact" },
+];
+
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
-  const footerLinks = [
-    {
-      label: "GitHub",
-      href: "https://github.com/aakashdeepyadav",
-      icon: Github,
-    },
-    {
-      label: "LinkedIn",
-      href: "https://linkedin.com/in/aakashdeepyadav",
-      icon: Linkedin,
-    },
-    {
-      label: "Email",
-      href: "mailto:aakashdeepyadav106@gmail.com",
-      icon: Mail,
-    },
-  ];
-
-  const quickLinks = [
-    { label: "Home", href: "#home" },
-    { label: "About", href: "#about" },
-    { label: "Skills", href: "#skills" },
-    { label: "Work", href: "#projects" },
-    { label: "Contact", href: "#contact" },
-  ];
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="glass border-t border-white/10 py-12">
+    <footer className="border-t border-[#1E2530] py-12 bg-[#0F1419]">
       <div className="container">
-        <div className="max-w-6xl mx-auto">
-          {/* Main Footer Content */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            {/* Brand */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <h3 className="text-xl font-bold text-white mb-2">ADY</h3>
-              <p className="text-muted text-sm">
-                Full Stack Developer & AI Builder
-              </p>
-            </motion.div>
-
-            {/* Quick Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <h4 className="text-white font-semibold mb-4 text-sm">Quick Links</h4>
-              <ul className="space-y-2">
-                {quickLinks.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-muted hover:text-white transition-colors text-sm"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            {/* Social Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <h4 className="text-white font-semibold mb-4 text-sm">Connect</h4>
-              <div className="flex gap-3">
-                {footerLinks.map((link) => {
-                  const Icon = link.icon;
-                  return (
-                    <motion.a
-                      key={link.label}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 bg-white/5 rounded-lg text-muted hover:text-white hover:bg-white/10 transition-colors border border-white/10"
-                      title={link.label}
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      <Icon size={18} />
-                    </motion.a>
-                  );
-                })}
-              </div>
-            </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+          {/* Brand */}
+          <div>
+            <a href="#home" className="text-xl font-bold tracking-tight">
+              <span className="text-gradient">ADY</span>
+            </a>
+            <p className="text-sm text-[#718096] mt-2 max-w-xs">
+              Full Stack Developer & AI Builder — building scalable web apps and ML-powered systems.
+            </p>
           </div>
 
-          {/* Divider */}
-          <div className="border-t border-white/10 my-8" />
+          {/* Navigation */}
+          <div>
+            <h4 className="text-xs font-semibold text-[#A0AEC0] uppercase tracking-wider mb-4">Navigation</h4>
+            <ul className="space-y-2">
+              {nav.map((n) => (
+                <li key={n.label}>
+                  <a href={n.href} className="text-sm text-[#718096] hover:text-[#00D9FF] transition-colors duration-200">
+                    {n.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          {/* Bottom Section */}
-          <motion.div
-            className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <p className="flex items-center gap-2">
-              Made with <Heart size={14} className="text-red-500 mx-1" /> by Aakash
-            </p>
-            <p>© {currentYear} All rights reserved.</p>
-          </motion.div>
+          {/* Connect */}
+          <div>
+            <h4 className="text-xs font-semibold text-[#A0AEC0] uppercase tracking-wider mb-4">Connect</h4>
+            <div className="flex gap-3">
+              {links.map(({ label, href, icon: Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="p-2.5 bg-[#1A1F26] border border-[#2D3748] rounded-lg text-[#718096] hover:text-[#00D9FF] hover:border-[#00D9FF]/30 transition-all duration-200"
+                  title={label}
+                >
+                  <Icon size={16} />
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
 
-          {/* Scroll to Top Button */}
-          <motion.button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-8 right-8 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors border border-white/10 z-40"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            title="Back to top"
-          >
-            <ArrowUp size={18} />
-          </motion.button>
+        {/* Divider */}
+        <div className="border-t border-[#1E2530] my-8" />
+
+        {/* Bottom */}
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-[#718096]">
+          <p className="flex items-center gap-1">
+            Made with <Heart size={12} className="text-red-500" /> by Aakash
+          </p>
+          <p>&copy; {year} All rights reserved.</p>
         </div>
       </div>
+
+      {/* Scroll to Top */}
+      <motion.button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className="fixed bottom-6 right-6 p-3 bg-[#1A1F26] border border-[#2D3748] rounded-full text-[#718096] hover:text-[#00D9FF] hover:border-[#00D9FF]/30 transition-all duration-200 z-40 shadow-lg"
+        whileHover={{ y: -2 }}
+        whileTap={{ scale: 0.9 }}
+        title="Back to top"
+      >
+        <ArrowUp size={16} />
+      </motion.button>
     </footer>
   );
 };

@@ -1,120 +1,97 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import ThemeToggle from "./ThemeToggle";
+import ScrollProgress from "./ScrollProgress";
+
+const navItems = [
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Experience", href: "#experience" },
+  { label: "Contact", href: "#contact" },
+];
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const navItems = [
-    { label: "Home", href: "#home" },
-    { label: "About", href: "#about" },
-    { label: "Work", href: "#projects" },
-    { label: "Contact", href: "#contact" },
-  ];
-
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? "glass shadow-lg" : "bg-transparent"
-    }`}>
-      <div className="container">
-        <div className="flex-between h-16">
-          {/* Logo */}
-          <motion.a
-            href="#home"
-            className="text-xl font-bold text-gradient hover:opacity-80 transition-opacity"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            ADY
-          </motion.a>
+    <>
+      <ScrollProgress />
+      <nav
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled
+            ? "bg-[#0F1419]/90 backdrop-blur-lg border-b border-[#2D3748]/60"
+            : "bg-transparent"
+          }`}
+      >
+        <div className="container">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <a href="#home" className="text-xl font-bold tracking-tight">
+              <span className="text-gradient">ADY</span>
+            </a>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-sm text-muted hover:text-white transition-colors duration-300 relative group"
-              >
-                {item.label}
-                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-indigo-500 to-pink-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-              </a>
-            ))}
-            <ThemeToggle />
+            {/* Desktop */}
+            <div className="hidden md:flex items-center gap-8">
+              {navItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="text-[13px] font-medium text-[#718096] hover:text-[#00D9FF] transition-colors duration-200 relative group"
+                >
+                  {item.label}
+                  <span className="absolute -bottom-0.5 left-0 w-0 h-[2px] bg-[#00D9FF] group-hover:w-full transition-all duration-300" />
+                </a>
+              ))}
+            </div>
+
+            {/* Mobile toggle */}
+            <button
+              onClick={() => setOpen(!open)}
+              className="md:hidden p-2 text-[#718096] hover:text-white transition-colors"
+              aria-label="Toggle menu"
+            >
+              {open ? <X size={22} /> : <Menu size={22} />}
+            </button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-muted hover:text-white transition-colors p-2 rounded-lg hover:bg-white/10"
-          >
-            <AnimatePresence mode="wait">
-              {isOpen ? (
-                <motion.div
-                  key="close"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <X size={20} />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="menu"
-                  initial={{ rotate: 90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Menu size={20} />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </button>
         </div>
 
         {/* Mobile Menu */}
         <AnimatePresence>
-          {isOpen && (
+          {open && (
             <motion.div
-              className="md:hidden glass border-t border-white/10 overflow-hidden mt-16"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
+              className="md:hidden bg-[#1A1F26] border-t border-[#2D3748]"
             >
-              <div className="py-4 space-y-2">
-                {navItems.map((item) => (
-                  <a
+              <div className="container py-4 space-y-1">
+                {navItems.map((item, i) => (
+                  <motion.a
                     key={item.label}
                     href={item.href}
-                    className="block text-sm text-muted hover:text-white transition-colors py-3 px-4 rounded-lg hover:bg-white/10"
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => setOpen(false)}
+                    className="block py-2 text-sm text-[#A0AEC0] hover:text-[#00D9FF] transition-colors"
+                    initial={{ opacity: 0, x: -16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
                   >
                     {item.label}
-                  </a>
+                  </motion.a>
                 ))}
-                <div className="px-4 pt-2">
-                  <ThemeToggle />
-                </div>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 };
 
