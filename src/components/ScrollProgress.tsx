@@ -1,31 +1,28 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 
 const ScrollProgress = () => {
-    const [scrollProgress, setScrollProgress] = useState(0);
+    const [progress, setProgress] = useState(0);
 
     useEffect(() => {
-        const handleScroll = () => {
-            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = (window.scrollY / totalHeight) * 100;
-            setScrollProgress(progress);
+        const fn = () => {
+            const total = document.documentElement.scrollHeight - window.innerHeight;
+            setProgress(total > 0 ? (window.scrollY / total) * 100 : 0);
         };
-
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", fn);
+        return () => window.removeEventListener("scroll", fn);
     }, []);
 
     return (
-        <motion.div
-            className="fixed top-0 left-0 right-0 h-1 bg-[#2D3748] z-50"
-            initial={{ scaleX: 0 }}
-            style={{ transformOrigin: "0%" }}
-        >
-            <motion.div
-                className="h-full bg-gradient-to-r from-[#00D9FF] to-[#FF6B35]"
-                style={{ width: `${scrollProgress}%` }}
+        <div className="fixed top-0 left-0 right-0 h-[3px] z-50 bg-transparent">
+            <div
+                className="h-full rounded-r-full transition-all duration-150"
+                style={{
+                    width: `${progress}%`,
+                    background: "linear-gradient(90deg, #00d4ff, #7c3aed, #f97316)",
+                    boxShadow: "0 0 10px rgba(0, 212, 255, 0.5)",
+                }}
             />
-        </motion.div>
+        </div>
     );
 };
 
