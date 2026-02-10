@@ -1,15 +1,45 @@
-import { Github, Linkedin, Mail, ArrowRight, Download, Sparkles } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowRight, Download, Sparkles, Code, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import profileImage from "../assets/aakash.jpg";
 
 const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background Gradient Orbs */}
+      {/* ── Animated Background ── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] animate-glow" />
-        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-violet-500/10 rounded-full blur-[120px] animate-glow" style={{ animationDelay: "2s" }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-orange-500/5 rounded-full blur-[150px]" />
+        {/* Gradient Orbs */}
+        <div className="absolute top-1/4 -left-32 w-[500px] h-[500px] bg-cyan-500/8 rounded-full blur-[140px] animate-glow" />
+        <div className="absolute bottom-1/4 -right-32 w-[500px] h-[500px] bg-violet-500/8 rounded-full blur-[140px] animate-glow" style={{ animationDelay: "2s" }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-orange-500/5 rounded-full blur-[180px]" />
+
+        {/* Dot Grid Pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: "radial-gradient(circle, #94a3b8 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+          }}
+        />
+
+        {/* Floating geometric shapes */}
+        <motion.div
+          className="absolute top-[15%] right-[20%] w-20 h-20 border border-cyan-500/10 rounded-lg"
+          animate={{ rotate: 360, y: [0, -20, 0] }}
+          transition={{ rotate: { duration: 25, repeat: Infinity, ease: "linear" }, y: { duration: 6, repeat: Infinity } }}
+        />
+        <motion.div
+          className="absolute bottom-[25%] left-[8%] w-12 h-12 border border-violet-500/10 rounded-full"
+          animate={{ rotate: -360, scale: [1, 1.2, 1] }}
+          transition={{ rotate: { duration: 20, repeat: Infinity, ease: "linear" }, scale: { duration: 4, repeat: Infinity } }}
+        />
+        <motion.div
+          className="absolute top-[60%] right-[10%] w-6 h-6 bg-orange-500/10 rounded-sm"
+          animate={{ rotate: 180, y: [0, -15, 0] }}
+          transition={{ rotate: { duration: 15, repeat: Infinity, ease: "linear" }, y: { duration: 5, repeat: Infinity } }}
+        />
+
+        {/* Gradient line decoration */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-32 bg-gradient-to-b from-transparent via-cyan-500/20 to-transparent" />
       </div>
 
       <div className="relative z-10 w-full wrapper py-20">
@@ -45,15 +75,22 @@ const Hero = () => {
               <span className="grad-text">Yadav</span>
             </motion.h1>
 
-            {/* Role */}
-            <motion.p
-              className="text-xl sm:text-2xl font-medium text-slate-400 mb-5"
+            {/* Role with icons */}
+            <motion.div
+              className="flex items-center gap-3 mb-5"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Full Stack Developer & AI Builder
-            </motion.p>
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800/50 border border-slate-700/30">
+                <Code size={14} className="text-cyan-400" />
+                <span className="text-sm font-medium text-slate-300">Full Stack Developer</span>
+              </div>
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800/50 border border-slate-700/30">
+                <Zap size={14} className="text-orange-400" />
+                <span className="text-sm font-medium text-slate-300">AI Builder</span>
+              </div>
+            </motion.div>
 
             {/* Description */}
             <motion.p
@@ -86,7 +123,7 @@ const Hero = () => {
 
             {/* Social */}
             <motion.div
-              className="flex items-center gap-5"
+              className="flex items-center gap-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.45 }}
@@ -101,11 +138,11 @@ const Hero = () => {
                   href={href}
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="text-slate-600 hover:text-cyan-400 transition-colors duration-300"
+                  className="p-2.5 rounded-xl bg-slate-900/50 border border-slate-800/40 text-slate-500 hover:text-cyan-400 hover:border-cyan-500/30 transition-all duration-300"
                   aria-label={label}
-                  whileHover={{ y: -2 }}
+                  whileHover={{ y: -3, scale: 1.1 }}
                 >
-                  <Icon size={22} />
+                  <Icon size={18} />
                 </motion.a>
               ))}
             </motion.div>
@@ -119,6 +156,13 @@ const Hero = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             <div className="relative animate-float">
+              {/* Outer ring decoration */}
+              <motion.div
+                className="absolute -inset-8 rounded-full border border-dashed border-slate-700/20"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+              />
+
               {/* Glow Ring */}
               <div
                 className="absolute -inset-4 rounded-full blur-2xl opacity-30"
@@ -143,27 +187,46 @@ const Hero = () => {
                 <span className="w-2.5 h-2.5 bg-emerald-400 rounded-full animate-pulse" />
                 <span className="text-sm font-medium text-slate-300">Open to work</span>
               </motion.div>
+
+              {/* Floating tech badge */}
+              <motion.div
+                className="absolute -top-3 -left-4 glass-card px-3 py-2 shadow-lg"
+                style={{ borderRadius: 12 }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1 }}
+              >
+                <span className="text-lg">⚡</span>
+              </motion.div>
             </div>
           </motion.div>
         </div>
 
-        {/* Stats Bar */}
+        {/* Stats Bar — Enhanced */}
         <motion.div
-          className="mt-20 grid grid-cols-3 max-w-lg gap-8"
+          className="mt-20 glass-card p-6 sm:p-8"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
         >
-          {[
-            { val: "15+", label: "Projects Built" },
-            { val: "3+", label: "Years Coding" },
-            { val: "5+", label: "Tech Stacks" },
-          ].map((s, i) => (
-            <div key={i}>
-              <div className="text-3xl font-bold text-white">{s.val}</div>
-              <div className="text-sm text-slate-500">{s.label}</div>
-            </div>
-          ))}
+          <div className="grid grid-cols-3 gap-8">
+            {[
+              { val: "8+", label: "Projects Built", icon: "🚀" },
+              { val: "3+", label: "Years Coding", icon: "💻" },
+              { val: "5+", label: "Tech Stacks", icon: "⚡" },
+            ].map((s, i) => (
+              <motion.div
+                key={i}
+                className="text-center"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <span className="text-2xl mb-2 block">{s.icon}</span>
+                <div className="text-3xl font-bold grad-text">{s.val}</div>
+                <div className="text-sm text-slate-500 mt-1">{s.label}</div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
 
@@ -180,7 +243,13 @@ const Hero = () => {
           transition={{ duration: 2, repeat: Infinity }}
         >
           <span className="text-xs tracking-wider uppercase">Scroll</span>
-          <ArrowRight size={16} className="rotate-90" />
+          <div className="w-5 h-8 border border-slate-700/40 rounded-full flex justify-center pt-1.5">
+            <motion.div
+              className="w-1 h-2 bg-cyan-400/60 rounded-full"
+              animate={{ y: [0, 8, 0], opacity: [1, 0.3, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
+          </div>
         </motion.div>
       </motion.div>
     </section>

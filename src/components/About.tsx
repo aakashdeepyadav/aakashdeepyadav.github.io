@@ -1,4 +1,4 @@
-import { Code, Brain, Lightbulb, Layers, Download } from "lucide-react";
+import { Code, Brain, Lightbulb, Layers, Download, User } from "lucide-react";
 import { motion } from "framer-motion";
 
 const fadeUp = (delay = 0) => ({
@@ -17,11 +17,28 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-24 section-divider">
-      <div className="wrapper">
+    <section id="about" className="relative py-28 section-divider overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 -right-60 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[160px]" />
+        <div
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage: "radial-gradient(circle, #94a3b8 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
+          }}
+        />
+      </div>
+
+      <div className="wrapper relative z-10">
         {/* Header */}
         <motion.div {...fadeUp()} className="mb-16">
-          <p className="text-cyan-400 font-semibold text-sm tracking-[0.2em] uppercase mb-3">About</p>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/20">
+              <User size={18} className="text-cyan-400" />
+            </div>
+            <p className="text-cyan-400 font-semibold text-sm tracking-[0.2em] uppercase">About</p>
+          </div>
           <h2 className="text-4xl sm:text-5xl font-bold text-white">Who I Am</h2>
         </motion.div>
 
@@ -41,19 +58,21 @@ const About = () => {
               </p>
             </div>
 
-            {/* Stats */}
+            {/* Stats — Glassmorphism cards */}
             <div className="grid grid-cols-3 gap-4 mb-10">
               {[
-                { val: "15+", label: "Projects" },
-                { val: "5+", label: "Tech Stacks" },
-                { val: "3+", label: "Years Coding" },
+                { val: "8+", label: "Projects", icon: "🚀" },
+                { val: "5+", label: "Tech Stacks", icon: "⚡" },
+                { val: "3+", label: "Years Coding", icon: "💻" },
               ].map((s, i) => (
                 <motion.div
                   key={i}
                   {...fadeUp(0.15 + i * 0.05)}
-                  className="glass-card p-4 text-center"
+                  className="glass-card p-5 text-center group"
+                  whileHover={{ scale: 1.03 }}
                 >
-                  <div className="text-2xl font-bold text-cyan-400">{s.val}</div>
+                  <span className="text-xl mb-2 block">{s.icon}</span>
+                  <div className="text-2xl font-bold text-cyan-400 group-hover:text-white transition-colors">{s.val}</div>
                   <div className="text-xs text-slate-500 mt-1">{s.label}</div>
                 </motion.div>
               ))}
@@ -69,29 +88,37 @@ const About = () => {
             <p className="text-cyan-400 font-semibold text-sm tracking-[0.2em] uppercase mb-8">
               Core Strengths
             </p>
-            <div className="space-y-6">
+            <div className="space-y-7">
               {competencies.map((skill, i) => {
                 const Icon = skill.icon;
                 return (
                   <motion.div key={i} {...fadeUp(0.25 + i * 0.08)}>
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="p-2.5 glass-card" style={{ borderColor: `${skill.color}20` }}>
+                      <div
+                        className="p-2.5 rounded-xl border"
+                        style={{
+                          borderColor: `${skill.color}25`,
+                          background: `${skill.color}08`,
+                        }}
+                      >
                         <Icon size={18} style={{ color: skill.color }} />
                       </div>
                       <span className="font-medium text-sm text-slate-200 flex-1">{skill.name}</span>
-                      <span className="text-xs text-slate-500 font-mono">{skill.pct}%</span>
+                      <span className="text-xs font-mono px-2 py-0.5 rounded-md bg-slate-800/60 border border-slate-700/30" style={{ color: skill.color }}>
+                        {skill.pct}%
+                      </span>
                     </div>
-                    <div className="h-1.5 bg-slate-800/80 rounded-full overflow-hidden">
+                    <div className="h-2 bg-slate-800/80 rounded-full overflow-hidden">
                       <motion.div
-                        className="h-full rounded-full"
+                        className="h-full rounded-full relative"
                         style={{
                           background: `linear-gradient(90deg, ${skill.color}, ${skill.color}80)`,
-                          boxShadow: `0 0 12px ${skill.color}40`,
+                          boxShadow: `0 0 16px ${skill.color}40`,
                         }}
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.pct}%` }}
                         viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.3 + i * 0.1 }}
+                        transition={{ duration: 1.2, delay: 0.3 + i * 0.1, ease: "easeOut" }}
                       />
                     </div>
                   </motion.div>
@@ -101,7 +128,9 @@ const About = () => {
 
             {/* Extra */}
             <motion.div {...fadeUp(0.5)} className="glass-card p-6 mt-10">
-              <h4 className="font-semibold text-sm text-white mb-4">What I Bring</h4>
+              <h4 className="font-semibold text-sm text-white mb-4 flex items-center gap-2">
+                <span className="text-lg">✨</span> What I Bring
+              </h4>
               <ul className="space-y-3">
                 {[
                   "Strong foundation in data structures & algorithms",

@@ -1,4 +1,4 @@
-import { ExternalLink, Github, TrendingUp, ArrowRight } from "lucide-react";
+import { ExternalLink, Github, TrendingUp, ArrowRight, Layers } from "lucide-react";
 import { motion } from "framer-motion";
 
 const fadeUp = (delay = 0) => ({
@@ -20,10 +20,10 @@ const projects = [
     ],
     tech: ["React.js", "Node.js", "FastAPI", "Python", "MongoDB", "Scikit-Learn"],
     github: "https://github.com/aakashdeepyadav",
-    live: "https://career-recommendation-system.vercel.app",
+    live: "https://student-career-recommendation-system.vercel.app/",
     timeline: "Oct 2025 – Nov 2025",
-    gradient: "from-cyan-500/20 to-blue-500/20",
     accent: "#00d4ff",
+    emoji: "🧠",
   },
   {
     title: "Shared Expense Tracker",
@@ -36,10 +36,10 @@ const projects = [
     ],
     tech: ["React.js", "Express.js", "Firebase", "JavaScript", "Firestore"],
     github: "https://github.com/aakashdeepyadav",
-    live: "https://expense-tracker-firebase.vercel.app",
+    live: "https://shared-expense-tracker-web.vercel.app/",
     timeline: "May 2025 – Jun 2025",
-    gradient: "from-violet-500/20 to-purple-500/20",
     accent: "#7c3aed",
+    emoji: "💰",
   },
   {
     title: "Time Management AI Coach",
@@ -54,17 +54,35 @@ const projects = [
     github: "https://github.com/aakashdeepyadav",
     live: "https://ai-productivity-coach.vercel.app",
     timeline: "Ongoing",
-    gradient: "from-orange-500/20 to-amber-500/20",
     accent: "#f97316",
+    emoji: "⏱️",
   },
 ];
 
 const Projects = () => (
-  <section id="projects" className="py-24 section-divider">
-    <div className="wrapper">
+  <section id="projects" className="relative py-28 section-divider overflow-hidden">
+    {/* Background decoration */}
+    <div className="absolute inset-0 pointer-events-none">
+      <div
+        className="absolute inset-0 opacity-[0.02]"
+        style={{
+          backgroundImage: "radial-gradient(circle, #94a3b8 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      />
+      <div className="absolute top-1/3 -right-40 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[160px]" />
+      <div className="absolute bottom-1/4 -left-40 w-[400px] h-[400px] bg-violet-500/5 rounded-full blur-[140px]" />
+    </div>
+
+    <div className="wrapper relative z-10">
       {/* Header */}
       <motion.div {...fadeUp()} className="mb-16">
-        <p className="text-cyan-400 font-semibold text-sm tracking-[0.2em] uppercase mb-3">Work</p>
+        <div className="flex items-center gap-3 mb-4">
+          <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/20">
+            <Layers size={18} className="text-cyan-400" />
+          </div>
+          <p className="text-cyan-400 font-semibold text-sm tracking-[0.2em] uppercase">Work</p>
+        </div>
         <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">Featured Projects</h2>
         <p className="text-slate-500 text-lg max-w-xl">
           Explore my recent work — full-stack apps, AI integrations, and more
@@ -72,58 +90,95 @@ const Projects = () => (
       </motion.div>
 
       {/* Cards */}
-      <div className="space-y-6">
+      <div className="space-y-8">
         {projects.map((p, i) => (
-          <motion.article key={i} {...fadeUp(i * 0.1)} className="glow-card group">
-            <div className="relative p-6 sm:p-8">
-              {/* Top gradient accent */}
-              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${p.gradient} rounded-t-2xl`} />
+          <motion.article key={i} {...fadeUp(i * 0.12)} className="group">
+            <div className="glow-card">
+              <div className="relative p-6 sm:p-8">
+                {/* Top accent bar */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-[2px] rounded-t-2xl"
+                  style={{ background: `linear-gradient(90deg, ${p.accent}, transparent)` }}
+                />
 
-              {/* Header */}
-              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-5">
-                <div>
-                  <h3 className="text-xl font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors">{p.title}</h3>
-                  <p className="text-sm text-slate-600">{p.timeline}</p>
+                {/* Header with emoji */}
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6">
+                  <div className="flex items-start gap-4">
+                    <motion.span
+                      className="text-3xl flex-shrink-0 mt-0.5"
+                      whileHover={{ scale: 1.2, rotate: 10 }}
+                    >
+                      {p.emoji}
+                    </motion.span>
+                    <div>
+                      <h3 className="text-xl font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors">
+                        {p.title}
+                      </h3>
+                      <p className="text-sm text-slate-600">{p.timeline}</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-2 flex-shrink-0">
+                    <motion.a
+                      href={p.github} target="_blank" rel="noopener noreferrer"
+                      className="p-2.5 rounded-xl bg-slate-800/50 border border-slate-700/30 text-slate-500 hover:text-white hover:border-cyan-500/30 transition-all"
+                      title="Source Code"
+                      whileHover={{ scale: 1.1 }}
+                    >
+                      <Github size={16} />
+                    </motion.a>
+                    <motion.a
+                      href={p.live} target="_blank" rel="noopener noreferrer"
+                      className="p-2.5 rounded-xl bg-slate-800/50 border border-slate-700/30 text-slate-500 hover:text-white hover:border-cyan-500/30 transition-all"
+                      title="Live Demo"
+                      whileHover={{ scale: 1.1 }}
+                    >
+                      <ExternalLink size={16} />
+                    </motion.a>
+                  </div>
                 </div>
-                <div className="flex gap-2 flex-shrink-0">
-                  <a href={p.github} target="_blank" rel="noopener noreferrer"
-                    className="p-2.5 rounded-xl bg-slate-800/50 border border-slate-700/30 text-slate-500 hover:text-white hover:border-cyan-500/30 transition-all"
-                    title="Source Code">
-                    <Github size={16} />
-                  </a>
-                  <a href={p.live} target="_blank" rel="noopener noreferrer"
-                    className="p-2.5 rounded-xl bg-slate-800/50 border border-slate-700/30 text-slate-500 hover:text-white hover:border-cyan-500/30 transition-all"
-                    title="Live Demo">
-                    <ExternalLink size={16} />
-                  </a>
-                </div>
-              </div>
 
-              {/* Description */}
-              <p className="text-slate-400 text-sm leading-relaxed mb-6">{p.desc}</p>
+                {/* Description */}
+                <p className="text-slate-400 text-sm leading-relaxed mb-6">{p.desc}</p>
 
-              {/* Results */}
-              <div className="mb-6">
-                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: p.accent }}>
-                  <TrendingUp size={14} /> Key Results
+                {/* Results with visual bar */}
+                <div className="mb-6">
+                  <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: p.accent }}>
+                    <TrendingUp size={14} /> Key Results
+                  </div>
+                  <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2.5">
+                    {p.results.map((r, j) => (
+                      <li key={j} className="flex items-start gap-2.5 text-sm text-slate-400">
+                        <span
+                          className="w-5 h-5 rounded-md flex items-center justify-center text-[10px] mt-0.5 flex-shrink-0 border"
+                          style={{
+                            color: p.accent,
+                            borderColor: `${p.accent}30`,
+                            background: `${p.accent}10`,
+                          }}
+                        >
+                          ✓
+                        </span>
+                        {r}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2">
-                  {p.results.map((r, j) => (
-                    <li key={j} className="flex items-start gap-2.5 text-sm text-slate-400">
-                      <span style={{ color: p.accent }} className="mt-0.5 flex-shrink-0">✓</span>
-                      {r}
-                    </li>
+
+                {/* Tech + Live link */}
+                <div className="flex flex-wrap items-center gap-2">
+                  {p.tech.map((t) => (
+                    <span key={t} className="skill-icon px-3 py-1.5 text-xs rounded-full bg-slate-800/60 text-slate-500 border border-slate-700/30 hover:text-white hover:border-slate-600">
+                      {t}
+                    </span>
                   ))}
-                </ul>
-              </div>
-
-              {/* Tech */}
-              <div className="flex flex-wrap gap-2">
-                {p.tech.map((t) => (
-                  <span key={t} className="px-3 py-1 text-xs rounded-full bg-slate-800/60 text-slate-500 border border-slate-700/30 hover:text-white hover:border-slate-600 transition-all">
-                    {t}
-                  </span>
-                ))}
+                  <a
+                    href={p.live} target="_blank" rel="noopener noreferrer"
+                    className="ml-auto hidden sm:inline-flex items-center gap-1.5 text-xs font-medium transition-colors hover:text-white"
+                    style={{ color: p.accent }}
+                  >
+                    View Live <ArrowRight size={12} />
+                  </a>
+                </div>
               </div>
             </div>
           </motion.article>
@@ -131,7 +186,7 @@ const Projects = () => (
       </div>
 
       {/* CTA */}
-      <motion.div {...fadeUp(0.4)} className="text-center mt-14">
+      <motion.div {...fadeUp(0.4)} className="text-center mt-16">
         <a href="https://github.com/aakashdeepyadav" target="_blank" rel="noopener noreferrer" className="btn-glow btn-glow-outline">
           <Github size={18} /> See All on GitHub <ArrowRight size={14} />
         </a>
