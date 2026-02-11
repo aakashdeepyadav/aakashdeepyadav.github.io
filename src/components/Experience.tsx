@@ -22,7 +22,7 @@ const Experience = () => {
         <div
           className="absolute inset-0 opacity-[0.02]"
           style={{
-            backgroundImage: "radial-gradient(circle, #94a3b8 1px, transparent 1px)",
+            backgroundImage: `radial-gradient(circle, var(--dot-color) 1px, transparent 1px)`,
             backgroundSize: "40px 40px",
           }}
         />
@@ -39,7 +39,7 @@ const Experience = () => {
             </div>
             <p className="text-cyan-400 font-semibold text-sm tracking-[0.2em] uppercase">Background</p>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white">Education & Experience</h2>
+          <h2 className="text-4xl sm:text-5xl font-bold theme-text-heading">Education & Experience</h2>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-14">
@@ -51,7 +51,7 @@ const Experience = () => {
                 <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/20">
                   <GraduationCap size={20} className="text-cyan-400" />
                 </div>
-                <h3 className="text-xl font-semibold text-white">Education</h3>
+                <h3 className="text-xl font-semibold theme-text-heading">Education</h3>
               </div>
 
               {/* Timeline */}
@@ -61,23 +61,23 @@ const Experience = () => {
 
                 {/* BTech */}
                 <motion.div {...fadeUp(0.15)} className="relative">
-                  <div className="absolute -left-[25px] top-1.5 w-3.5 h-3.5 rounded-full bg-cyan-400 border-[3px] border-[#0a0a0f] shadow-[0_0_10px_rgba(0,212,255,0.4)]" />
+                  <div className="absolute -left-[25px] top-1.5 w-3.5 h-3.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(0,212,255,0.4)]" style={{ border: "3px solid var(--timeline-dot-border)" }} />
                   <div className="glass-card p-5">
                     <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
-                      <h4 className="font-semibold text-white flex items-center gap-2">
+                      <h4 className="font-semibold theme-text-heading flex items-center gap-2">
                         <span>🎓</span> B.Tech — Computer Science
                       </h4>
-                      <span className="text-xs text-slate-500 flex items-center gap-1 whitespace-nowrap px-2 py-0.5 rounded-md bg-slate-800/60 border border-slate-700/30">
+                      <span className="text-xs theme-text-muted flex items-center gap-1 whitespace-nowrap px-2 py-0.5 rounded-md theme-bg-tag" style={{ border: "1px solid var(--border-tag)" }}>
                         <Calendar size={11} /> 2023 – Present
                       </span>
                     </div>
                     <p className="text-sm text-cyan-400 font-medium mb-1">Lovely Professional University</p>
-                    <p className="text-xs text-slate-600 flex items-center gap-1 mb-3">
+                    <p className="text-xs theme-text-faint flex items-center gap-1 mb-3">
                       <MapPin size={11} /> Punjab, India
                     </p>
                     <ul className="space-y-1.5">
                       {["Focus on DSA, ML, and Software Engineering", "Active in coding clubs and tech communities", "Participated in multiple hackathons"].map((h, i) => (
-                        <li key={i} className="flex items-start gap-2 text-xs text-slate-500">
+                        <li key={i} className="flex items-start gap-2 text-xs theme-text-muted">
                           <span className="w-1 h-1 bg-cyan-400 rounded-full mt-[6px] flex-shrink-0" />
                           {h}
                         </li>
@@ -88,33 +88,33 @@ const Experience = () => {
 
                 {/* Intermediate */}
                 <motion.div {...fadeUp(0.2)} className="relative">
-                  <div className="absolute -left-[25px] top-1.5 w-3.5 h-3.5 rounded-full bg-slate-600 border-[3px] border-[#0a0a0f]" />
+                  <div className="absolute -left-[25px] top-1.5 w-3.5 h-3.5 rounded-full bg-slate-500" style={{ border: "3px solid var(--timeline-dot-border)" }} />
                   <div className="glass-card p-5">
                     <div className="flex flex-wrap items-start justify-between gap-2 mb-1">
-                      <h4 className="font-semibold text-white text-sm flex items-center gap-2">
+                      <h4 className="font-semibold theme-text-heading text-sm flex items-center gap-2">
                         <span>📚</span> Intermediate
                       </h4>
-                      <span className="text-xs text-slate-500 flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-800/60 border border-slate-700/30">
+                      <span className="text-xs theme-text-muted flex items-center gap-1 px-2 py-0.5 rounded-md theme-bg-tag" style={{ border: "1px solid var(--border-tag)" }}>
                         <Calendar size={11} /> 2020 – 2022
                       </span>
                     </div>
-                    <p className="text-sm text-slate-400">Tiny Tots Sr. Sec. School, Ayodhya</p>
+                    <p className="text-sm theme-text-secondary">Tiny Tots Sr. Sec. School, Ayodhya</p>
                   </div>
                 </motion.div>
 
                 {/* Matric */}
                 <motion.div {...fadeUp(0.25)} className="relative">
-                  <div className="absolute -left-[25px] top-1.5 w-3.5 h-3.5 rounded-full bg-slate-600 border-[3px] border-[#0a0a0f]" />
+                  <div className="absolute -left-[25px] top-1.5 w-3.5 h-3.5 rounded-full bg-slate-500" style={{ border: "3px solid var(--timeline-dot-border)" }} />
                   <div className="glass-card p-5">
                     <div className="flex flex-wrap items-start justify-between gap-2 mb-1">
-                      <h4 className="font-semibold text-white text-sm flex items-center gap-2">
+                      <h4 className="font-semibold theme-text-heading text-sm flex items-center gap-2">
                         <span>📖</span> Matriculation
                       </h4>
-                      <span className="text-xs text-slate-500 flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-800/60 border border-slate-700/30">
+                      <span className="text-xs theme-text-muted flex items-center gap-1 px-2 py-0.5 rounded-md theme-bg-tag" style={{ border: "1px solid var(--border-tag)" }}>
                         <Calendar size={11} /> 2018 – 2020
                       </span>
                     </div>
-                    <p className="text-sm text-slate-400">Tiny Tots Sr. Sec. School, Ayodhya</p>
+                    <p className="text-sm theme-text-secondary">Tiny Tots Sr. Sec. School, Ayodhya</p>
                   </div>
                 </motion.div>
               </div>
@@ -126,23 +126,23 @@ const Experience = () => {
                 <div className="p-2.5 rounded-xl bg-orange-500/10 border border-orange-500/20">
                   <Briefcase size={20} className="text-orange-400" />
                 </div>
-                <h3 className="text-xl font-semibold text-white">Training</h3>
+                <h3 className="text-xl font-semibold theme-text-heading">Training</h3>
               </div>
 
               <div className="glow-card">
                 <div className="p-6">
                   <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
-                    <h4 className="font-semibold text-white flex items-center gap-2">
+                    <h4 className="font-semibold theme-text-heading flex items-center gap-2">
                       <span>🚀</span> Agentic AI Application Training
                     </h4>
-                    <span className="text-xs text-slate-500 flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-800/60 border border-slate-700/30">
+                    <span className="text-xs theme-text-muted flex items-center gap-1 px-2 py-0.5 rounded-md theme-bg-tag" style={{ border: "1px solid var(--border-tag)" }}>
                       <Calendar size={11} /> Jun – Aug 2025
                     </span>
                   </div>
                   <p className="text-sm text-orange-400 font-medium mb-4">Programming Pathshala</p>
                   <ul className="space-y-2">
                     {["Designing and building Agentic AI systems", "LLM orchestration and autonomous agents", "Built AI apps with LLM APIs and backend services", "Production-ready AI application development"].map((s, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-sm text-slate-400">
+                      <li key={i} className="flex items-start gap-2.5 text-sm theme-text-secondary">
                         <span className="w-1.5 h-1.5 bg-orange-400 rounded-full mt-[7px] flex-shrink-0" />
                         {s}
                       </li>
@@ -160,7 +160,7 @@ const Experience = () => {
                 <div className="p-2.5 rounded-xl bg-violet-500/10 border border-violet-500/20">
                   <Award size={20} className="text-violet-400" />
                 </div>
-                <h3 className="text-xl font-semibold text-white">Certifications</h3>
+                <h3 className="text-xl font-semibold theme-text-heading">Certifications</h3>
               </div>
 
               <div className="space-y-4">
@@ -168,10 +168,10 @@ const Experience = () => {
                   <motion.div key={i} {...fadeUp(0.2 + i * 0.08)} className="glass-card p-5 flex items-start gap-4" whileHover={{ x: 4 }}>
                     <div className="text-2xl flex-shrink-0">{c.emoji}</div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-semibold text-sm text-white mb-0.5">{c.title}</h4>
-                      <p className="text-xs text-slate-500">{c.issuer}</p>
+                      <h4 className="font-semibold text-sm theme-text-heading mb-0.5">{c.title}</h4>
+                      <p className="text-xs theme-text-muted">{c.issuer}</p>
                     </div>
-                    <span className="text-xs text-slate-600 whitespace-nowrap flex-shrink-0 px-2 py-0.5 rounded-md bg-slate-800/60 border border-slate-700/30">
+                    <span className="text-xs theme-text-faint whitespace-nowrap flex-shrink-0 px-2 py-0.5 rounded-md theme-bg-tag" style={{ border: "1px solid var(--border-tag)" }}>
                       {c.date}
                     </span>
                   </motion.div>
@@ -185,7 +185,7 @@ const Experience = () => {
                 <div className="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/20">
                   <Award size={20} className="text-amber-400" />
                 </div>
-                <h3 className="text-xl font-semibold text-white">Achievements</h3>
+                <h3 className="text-xl font-semibold theme-text-heading">Achievements</h3>
               </div>
 
               <div className="glow-card">
@@ -193,8 +193,8 @@ const Experience = () => {
                   <div className="flex items-start gap-5">
                     <span className="text-4xl flex-shrink-0">🏆</span>
                     <div>
-                      <h4 className="font-semibold text-white mb-2">100+ LeetCode Problems</h4>
-                      <p className="text-sm text-slate-400 mb-4">
+                      <h4 className="font-semibold theme-text-heading mb-2">100+ LeetCode Problems</h4>
+                      <p className="text-sm theme-text-secondary mb-4">
                         Consistently solving DSA problems across arrays, strings, recursion, hashing, and algorithms.
                       </p>
                       <div className="flex flex-wrap gap-2">
@@ -212,7 +212,7 @@ const Experience = () => {
 
             {/* Extra visual — coding activity */}
             <motion.div {...fadeUp(0.45)} className="glass-card p-6">
-              <h4 className="font-semibold text-sm text-white mb-4 flex items-center gap-2">
+              <h4 className="font-semibold text-sm theme-text-heading mb-4 flex items-center gap-2">
                 <BookOpen size={16} className="text-cyan-400" /> Current Focus
               </h4>
               <div className="space-y-3">
@@ -223,10 +223,10 @@ const Experience = () => {
                 ].map((f, i) => (
                   <div key={i}>
                     <div className="flex justify-between text-xs mb-1.5">
-                      <span className="text-slate-400">{f.label}</span>
+                      <span className="theme-text-secondary">{f.label}</span>
                       <span className="font-mono" style={{ color: f.color }}>{f.pct}%</span>
                     </div>
-                    <div className="h-1.5 bg-slate-800/80 rounded-full overflow-hidden">
+                    <div className="h-1.5 rounded-full overflow-hidden" style={{ backgroundColor: "var(--progress-bar-bg)" }}>
                       <motion.div
                         className="h-full rounded-full"
                         style={{ background: f.color, boxShadow: `0 0 8px ${f.color}40` }}

@@ -2,7 +2,98 @@
 @import "tailwindcss";
 
 /* ============================================
-   BASE STYLES (use @layer to work with TW v4)
+   THEME VARIABLES
+   ============================================ */
+:root {
+  /* Backgrounds */
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #0f172a;
+  --bg-card: rgba(15, 23, 42, 0.8);
+  --bg-card-alt: rgba(15, 23, 42, 0.4);
+  --bg-input: rgba(15, 23, 42, 0.6);
+  --bg-badge: rgba(15, 23, 42, 0.5);
+  --bg-tag: rgba(30, 41, 59, 0.6);
+  --bg-footer: #060609;
+
+  /* Text */
+  --text-primary: #e2e8f0;
+  --text-heading: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-faint: #475569;
+
+  /* Borders */
+  --border-primary: rgba(148, 163, 184, 0.08);
+  --border-secondary: rgba(148, 163, 184, 0.15);
+  --border-tag: rgba(51, 65, 85, 0.3);
+  --border-hover: rgba(0, 212, 255, 0.25);
+
+  /* Cards */
+  --glass-bg: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.4));
+  --glow-card-bg: #0f172a;
+  --glow-border: linear-gradient(135deg, rgba(0, 212, 255, 0.3), rgba(124, 58, 237, 0.3), rgba(249, 115, 22, 0.2));
+
+  /* Scrollbar */
+  --scrollbar-track: #0a0a0f;
+  --scrollbar-thumb: #1e293b;
+  --scrollbar-hover: #334155;
+
+  /* Misc */
+  --selection-bg: rgba(0, 217, 255, 0.25);
+  --dot-color: #94a3b8;
+  --nav-scrolled-bg: rgba(10, 10, 15, 0.85);
+  --mobile-menu-bg: rgba(15, 23, 42, 0.95);
+  --progress-bar-bg: rgba(30, 41, 59, 0.8);
+  --timeline-dot-border: #0a0a0f;
+  --section-divider: rgba(148, 163, 184, 0.06);
+}
+
+.light-theme {
+  /* Backgrounds */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-card-alt: rgba(241, 245, 249, 0.6);
+  --bg-input: rgba(241, 245, 249, 0.8);
+  --bg-badge: rgba(241, 245, 249, 0.8);
+  --bg-tag: rgba(226, 232, 240, 0.6);
+  --bg-footer: #f1f5f9;
+
+  /* Text */
+  --text-primary: #1e293b;
+  --text-heading: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-faint: #94a3b8;
+
+  /* Borders */
+  --border-primary: rgba(148, 163, 184, 0.2);
+  --border-secondary: rgba(148, 163, 184, 0.3);
+  --border-tag: rgba(203, 213, 225, 0.5);
+  --border-hover: rgba(0, 180, 216, 0.35);
+
+  /* Cards */
+  --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(241, 245, 249, 0.7));
+  --glow-card-bg: #ffffff;
+  --glow-border: linear-gradient(135deg, rgba(0, 180, 216, 0.35), rgba(124, 58, 237, 0.25), rgba(249, 115, 22, 0.15));
+
+  /* Scrollbar */
+  --scrollbar-track: #f1f5f9;
+  --scrollbar-thumb: #cbd5e1;
+  --scrollbar-hover: #94a3b8;
+
+  /* Misc */
+  --selection-bg: rgba(0, 180, 216, 0.2);
+  --dot-color: #cbd5e1;
+  --nav-scrolled-bg: rgba(248, 250, 252, 0.9);
+  --mobile-menu-bg: rgba(255, 255, 255, 0.97);
+  --progress-bar-bg: rgba(226, 232, 240, 0.8);
+  --timeline-dot-border: #f8fafc;
+  --section-divider: rgba(148, 163, 184, 0.12);
+}
+
+/* ============================================
+   BASE STYLES
    ============================================ */
 @layer base {
   html {
@@ -11,11 +102,12 @@
 
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    background-color: #0a0a0f;
-    color: #e2e8f0;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   ::-webkit-scrollbar {
@@ -23,26 +115,26 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #0a0a0f;
+    background: var(--scrollbar-track);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #1e293b;
+    background: var(--scrollbar-thumb);
     border-radius: 99px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #334155;
+    background: var(--scrollbar-hover);
   }
 
   ::selection {
-    background: rgba(0, 217, 255, 0.25);
-    color: #fff;
+    background: var(--selection-bg);
+    color: var(--text-heading);
   }
 }
 
 /* ============================================
-   CUSTOM UTILITIES (in @layer utilities for TW v4)
+   CUSTOM UTILITIES
    ============================================ */
 @layer utilities {
 
@@ -78,6 +170,59 @@
     background-clip: text;
   }
 
+  /* ── Theme Text Utilities ──────────────── */
+  .theme-text-heading {
+    color: var(--text-heading);
+  }
+
+  .theme-text-primary {
+    color: var(--text-primary);
+  }
+
+  .theme-text-secondary {
+    color: var(--text-secondary);
+  }
+
+  .theme-text-muted {
+    color: var(--text-muted);
+  }
+
+  .theme-text-faint {
+    color: var(--text-faint);
+  }
+
+  .theme-bg-primary {
+    background-color: var(--bg-primary);
+  }
+
+  .theme-bg-secondary {
+    background-color: var(--bg-secondary);
+  }
+
+  .theme-bg-tag {
+    background-color: var(--bg-tag);
+  }
+
+  .theme-bg-badge {
+    background-color: var(--bg-badge);
+  }
+
+  .theme-border {
+    border-color: var(--border-primary);
+  }
+
+  .theme-border-tag {
+    border-color: var(--border-tag);
+  }
+
+  .theme-logo {
+    transition: filter 0.3s ease;
+  }
+
+  .light-theme .theme-logo {
+    filter: brightness(0) saturate(100%);
+  }
+
   /* ── Animations ────────────────────────── */
   .animate-glow {
     animation: glow-pulse 4s ease-in-out infinite;
@@ -92,7 +237,7 @@
   }
 
   .shimmer-text {
-    background: linear-gradient(90deg, #e2e8f0 0%, #00d4ff 50%, #e2e8f0 100%);
+    background: linear-gradient(90deg, var(--text-primary) 0%, #00d4ff 50%, var(--text-primary) 100%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -102,12 +247,12 @@
 
   /* ── Section Divider ───────────────────── */
   .section-divider {
-    border-top: 1px solid rgba(148, 163, 184, 0.06);
+    border-top: 1px solid var(--section-divider);
   }
 }
 
 /* ============================================
-   KEYFRAMES (outside layers — global)
+   KEYFRAMES
    ============================================ */
 @keyframes glow-pulse {
 
@@ -158,29 +303,29 @@
 }
 
 /* ============================================
-   COMPONENT STYLES (outside layers — highest priority)
+   COMPONENT STYLES
    ============================================ */
 
 /* ── Glass Card ──────────────────────────── */
 .glass-card {
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.4));
+  background: var(--glass-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(148, 163, 184, 0.08);
+  border: 1px solid var(--border-primary);
   border-radius: 16px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-card:hover {
-  border-color: rgba(0, 212, 255, 0.25);
-  box-shadow: 0 0 30px rgba(0, 212, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.3);
+  border-color: var(--border-hover);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
 }
 
 /* ── Glow Card (animated gradient border) ── */
 .glow-card {
   position: relative;
-  background: #0f172a;
+  background: var(--glow-card-bg);
   border-radius: 16px;
   overflow: hidden;
 }
@@ -191,13 +336,14 @@
   inset: 0;
   border-radius: 16px;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), rgba(124, 58, 237, 0.3), rgba(249, 115, 22, 0.2));
+  background: var(--glow-border);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0.5;
   transition: opacity 0.4s ease;
+  pointer-events: none;
 }
 
 .glow-card:hover::before {
@@ -232,9 +378,9 @@
 }
 
 .btn-glow-outline {
-  background: rgba(15, 23, 42, 0.6);
-  color: #e2e8f0;
-  border: 1px solid rgba(148, 163, 184, 0.15);
+  background: var(--bg-input);
+  color: var(--text-primary);
+  border: 1px solid var(--border-secondary);
   backdrop-filter: blur(10px);
 }
 
@@ -251,16 +397,16 @@
 
 .skill-icon:hover {
   transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 /* ── Form Inputs ─────────────────────────── */
 .input-glow {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(148, 163, 184, 0.1);
+  background: var(--bg-input);
+  border: 1px solid var(--border-primary);
   border-radius: 12px;
   padding: 14px 18px;
-  color: #e2e8f0;
+  color: var(--text-primary);
   font-family: inherit;
   font-size: 14px;
   width: 100%;
@@ -269,7 +415,7 @@
 }
 
 .input-glow::placeholder {
-  color: #475569;
+  color: var(--text-faint);
 }
 
 .input-glow:focus {

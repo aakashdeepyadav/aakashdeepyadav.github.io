@@ -66,7 +66,7 @@ const Projects = () => (
       <div
         className="absolute inset-0 opacity-[0.02]"
         style={{
-          backgroundImage: "radial-gradient(circle, #94a3b8 1px, transparent 1px)",
+          backgroundImage: `radial-gradient(circle, var(--dot-color) 1px, transparent 1px)`,
           backgroundSize: "40px 40px",
         }}
       />
@@ -83,8 +83,8 @@ const Projects = () => (
           </div>
           <p className="text-cyan-400 font-semibold text-sm tracking-[0.2em] uppercase">Work</p>
         </div>
-        <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">Featured Projects</h2>
-        <p className="text-slate-500 text-lg max-w-xl">
+        <h2 className="text-4xl sm:text-5xl font-bold theme-text-heading mb-4">Featured Projects</h2>
+        <p className="theme-text-muted text-lg max-w-xl">
           Explore my recent work — full-stack apps, AI integrations, and more
         </p>
       </motion.div>
@@ -111,16 +111,17 @@ const Projects = () => (
                       {p.emoji}
                     </motion.span>
                     <div>
-                      <h3 className="text-xl font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors">
+                      <h3 className="text-xl font-bold theme-text-heading mb-1 group-hover:text-cyan-400 transition-colors">
                         {p.title}
                       </h3>
-                      <p className="text-sm text-slate-600">{p.timeline}</p>
+                      <p className="text-sm theme-text-faint">{p.timeline}</p>
                     </div>
                   </div>
                   <div className="flex gap-2 flex-shrink-0">
                     <motion.a
                       href={p.github} target="_blank" rel="noopener noreferrer"
-                      className="p-2.5 rounded-xl bg-slate-800/50 border border-slate-700/30 text-slate-500 hover:text-white hover:border-cyan-500/30 transition-all"
+                      className="p-2.5 rounded-xl theme-bg-tag theme-text-muted hover:text-cyan-400 transition-all"
+                      style={{ border: "1px solid var(--border-tag)" }}
                       title="Source Code"
                       whileHover={{ scale: 1.1 }}
                     >
@@ -128,7 +129,8 @@ const Projects = () => (
                     </motion.a>
                     <motion.a
                       href={p.live} target="_blank" rel="noopener noreferrer"
-                      className="p-2.5 rounded-xl bg-slate-800/50 border border-slate-700/30 text-slate-500 hover:text-white hover:border-cyan-500/30 transition-all"
+                      className="p-2.5 rounded-xl theme-bg-tag theme-text-muted hover:text-cyan-400 transition-all"
+                      style={{ border: "1px solid var(--border-tag)" }}
                       title="Live Demo"
                       whileHover={{ scale: 1.1 }}
                     >
@@ -138,7 +140,7 @@ const Projects = () => (
                 </div>
 
                 {/* Description */}
-                <p className="text-slate-400 text-sm leading-relaxed mb-6">{p.desc}</p>
+                <p className="theme-text-secondary text-sm leading-relaxed mb-6">{p.desc}</p>
 
                 {/* Results with visual bar */}
                 <div className="mb-6">
@@ -147,7 +149,7 @@ const Projects = () => (
                   </div>
                   <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2.5">
                     {p.results.map((r, j) => (
-                      <li key={j} className="flex items-start gap-2.5 text-sm text-slate-400">
+                      <li key={j} className="flex items-start gap-2.5 text-sm theme-text-secondary">
                         <span
                           className="w-5 h-5 rounded-md flex items-center justify-center text-[10px] mt-0.5 flex-shrink-0 border"
                           style={{
@@ -167,13 +169,13 @@ const Projects = () => (
                 {/* Tech + Live link */}
                 <div className="flex flex-wrap items-center gap-2">
                   {p.tech.map((t) => (
-                    <span key={t} className="skill-icon px-3 py-1.5 text-xs rounded-full bg-slate-800/60 text-slate-500 border border-slate-700/30 hover:text-white hover:border-slate-600">
+                    <span key={t} className="skill-icon px-3 py-1.5 text-xs rounded-full theme-bg-tag theme-text-muted theme-text-heading-hover transition-colors cursor-default" style={{ border: "1px solid var(--border-tag)" }}>
                       {t}
                     </span>
                   ))}
                   <a
                     href={p.live} target="_blank" rel="noopener noreferrer"
-                    className="ml-auto hidden sm:inline-flex items-center gap-1.5 text-xs font-medium transition-colors hover:text-white"
+                    className="ml-auto hidden sm:inline-flex items-center gap-1.5 text-xs font-medium transition-colors hover:theme-text-heading"
                     style={{ color: p.accent }}
                   >
                     View Live <ArrowRight size={12} />

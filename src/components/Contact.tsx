@@ -1,7 +1,7 @@
-import { Mail, MapPin, Github, Linkedin, ExternalLink, Send, MessageSquare } from "lucide-react";
+import { Mail, MapPin, Github, Linkedin, ExternalLink, Send, MessageSquare, Trophy } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import emailjs from "emailjs-com";
+import { SiLeetcode } from "react-icons/si";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -16,6 +16,8 @@ const contactInfo = [
   { icon: Mail, label: "Email", value: "aakashdeepyadav106@gmail.com", href: "mailto:aakashdeepyadav106@gmail.com", accent: "#00d4ff" },
   { icon: Linkedin, label: "LinkedIn", value: "aakashdeepyadav", href: "https://linkedin.com/in/aakashdeepyadav", accent: "#0077b5" },
   { icon: Github, label: "GitHub", value: "aakashdeepyadav", href: "https://github.com/aakashdeepyadav", accent: "#7c3aed" },
+  { icon: SiLeetcode, label: "LeetCode", value: "aakashdeepyadav", href: "https://leetcode.com/u/aakashdeepyadav/", accent: "#ffa116" },
+  { icon: Trophy, label: "Codolio", value: "aakashdeepyadav", href: "https://codolio.com/profile/aakashdeepyadav", accent: "#10b981" },
   { icon: MapPin, label: "Location", value: "Punjab, India", href: "#", accent: "#f97316" },
 ];
 
@@ -40,17 +42,28 @@ const Contact = () => {
     if (!validate()) return;
     setSending(true);
     try {
-      await emailjs.send(
-        "YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID",
-        { from_name: form.name, from_email: form.email, message: form.message, to_name: "Aakash" },
-        "YOUR_PUBLIC_KEY"
-      );
+      const response = await fetch("https://formsubmit.co/ajax/aakashdeepyadav106@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          _subject: `Portfolio Contact from ${form.name}`,
+        }),
+      });
+      if (!response.ok) throw new Error("Failed");
       toast.success("Message sent! I'll reply soon.");
       setForm({ name: "", email: "", message: "" });
       setErrors({});
     } catch {
       toast.error("Failed to send. Please email me directly.");
-    } finally { setSending(false); }
+    } finally {
+      setSending(false);
+    }
   };
 
   const change = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -66,7 +79,7 @@ const Contact = () => {
         <div
           className="absolute inset-0 opacity-[0.02]"
           style={{
-            backgroundImage: "radial-gradient(circle, #94a3b8 1px, transparent 1px)",
+            backgroundImage: `radial-gradient(circle, var(--dot-color) 1px, transparent 1px)`,
             backgroundSize: "40px 40px",
           }}
         />
@@ -84,8 +97,8 @@ const Contact = () => {
             </div>
             <p className="text-cyan-400 font-semibold text-sm tracking-[0.2em] uppercase">Contact</p>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">Let's Connect</h2>
-          <p className="text-slate-500 text-lg max-w-xl">
+          <h2 className="text-4xl sm:text-5xl font-bold theme-text-heading mb-4">Let's Connect</h2>
+          <p className="theme-text-muted text-lg max-w-xl">
             Open to opportunities, collaborations, and interesting conversations
           </p>
         </motion.div>
@@ -115,13 +128,13 @@ const Contact = () => {
                     <Icon size={18} style={{ color: info.accent }} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-[10px] uppercase tracking-widest text-slate-600 mb-0.5">{info.label}</p>
-                    <p className="font-medium text-sm text-slate-300 truncate group-hover:text-cyan-400 transition-colors">
+                    <p className="text-[10px] uppercase tracking-widest theme-text-faint mb-0.5">{info.label}</p>
+                    <p className="font-medium text-sm theme-text-secondary truncate group-hover:text-cyan-400 transition-colors">
                       {info.value}
                     </p>
                   </div>
                   {info.href.startsWith("http") && (
-                    <ExternalLink size={14} className="text-slate-700 group-hover:text-cyan-400 transition-colors flex-shrink-0" />
+                    <ExternalLink size={14} className="theme-text-faint group-hover:text-cyan-400 transition-colors flex-shrink-0" />
                   )}
                 </motion.a>
               );
@@ -132,8 +145,8 @@ const Contact = () => {
               <div className="flex items-center gap-4">
                 <span className="text-3xl">💬</span>
                 <div>
-                  <p className="text-sm font-medium text-white mb-1">Prefer a quick chat?</p>
-                  <p className="text-xs text-slate-500">I typically respond within 24 hours</p>
+                  <p className="text-sm font-medium theme-text-heading mb-1">Prefer a quick chat?</p>
+                  <p className="text-xs theme-text-muted">I typically respond within 24 hours</p>
                 </div>
               </div>
             </motion.div>
@@ -144,22 +157,22 @@ const Contact = () => {
             <div className="p-6 sm:p-8 space-y-5">
               <div className="flex items-center gap-2 mb-2">
                 <Send size={16} className="text-cyan-400" />
-                <h3 className="font-semibold text-white text-sm">Send a Message</h3>
+                <h3 className="font-semibold theme-text-heading text-sm">Send a Message</h3>
               </div>
               <div>
-                <label className="block text-xs font-medium text-slate-400 mb-2">Name</label>
+                <label className="block text-xs font-medium theme-text-secondary mb-2">Name</label>
                 <input name="name" value={form.name} onChange={change}
                   className={`input-glow ${errors.name ? "!border-red-500/50" : ""}`} placeholder="Your name" />
                 {errors.name && <p className="text-red-400 text-xs mt-1.5">{errors.name}</p>}
               </div>
               <div>
-                <label className="block text-xs font-medium text-slate-400 mb-2">Email</label>
+                <label className="block text-xs font-medium theme-text-secondary mb-2">Email</label>
                 <input name="email" type="email" value={form.email} onChange={change}
                   className={`input-glow ${errors.email ? "!border-red-500/50" : ""}`} placeholder="your@email.com" />
                 {errors.email && <p className="text-red-400 text-xs mt-1.5">{errors.email}</p>}
               </div>
               <div>
-                <label className="block text-xs font-medium text-slate-400 mb-2">Message</label>
+                <label className="block text-xs font-medium theme-text-secondary mb-2">Message</label>
                 <textarea name="message" rows={4} value={form.message} onChange={change}
                   className={`input-glow resize-none ${errors.message ? "!border-red-500/50" : ""}`} placeholder="Tell me about your project..." />
                 {errors.message && <p className="text-red-400 text-xs mt-1.5">{errors.message}</p>}

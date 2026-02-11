@@ -54,7 +54,7 @@ const Skills = () => (
       <div
         className="absolute inset-0 opacity-[0.02]"
         style={{
-          backgroundImage: "radial-gradient(circle, #94a3b8 1px, transparent 1px)",
+          backgroundImage: `radial-gradient(circle, var(--dot-color) 1px, transparent 1px)`,
           backgroundSize: "40px 40px",
         }}
       />
@@ -70,8 +70,8 @@ const Skills = () => (
           </div>
           <p className="text-cyan-400 font-semibold text-sm tracking-[0.2em] uppercase">Skills</p>
         </div>
-        <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">Tech Stack</h2>
-        <p className="text-slate-500 text-lg max-w-xl">
+        <h2 className="text-4xl sm:text-5xl font-bold theme-text-heading mb-4">Tech Stack</h2>
+        <p className="theme-text-muted text-lg max-w-xl">
           A comprehensive toolkit spanning full-stack development, machine learning, and modern web technologies
         </p>
       </motion.div>
@@ -94,7 +94,7 @@ const Skills = () => (
                 >
                   {group.icon}
                 </motion.span>
-                <h3 className="text-base font-semibold text-white">{group.category}</h3>
+                <h3 className="text-base font-semibold theme-text-heading">{group.category}</h3>
                 <span
                   className="ml-auto text-[10px] font-mono px-2 py-0.5 rounded-md border"
                   style={{
@@ -110,7 +110,8 @@ const Skills = () => (
                 {group.skills.map((skill) => (
                   <motion.span
                     key={skill}
-                    className="skill-icon px-3 py-1.5 text-xs rounded-full bg-slate-800/60 text-slate-400 border border-slate-700/30 hover:border-slate-600 cursor-default"
+                    className="skill-icon px-3 py-1.5 text-xs rounded-full theme-bg-tag theme-text-secondary cursor-default"
+                    style={{ border: "1px solid var(--border-tag)" }}
                     whileHover={{
                       color: group.accent,
                       borderColor: `${group.accent}40`,
@@ -130,8 +131,8 @@ const Skills = () => (
         <div className="p-8 flex flex-col sm:flex-row items-start sm:items-center gap-5">
           <span className="text-4xl">🎯</span>
           <div>
-            <h3 className="text-lg font-semibold text-white mb-2">Continuous Learning & Growth</h3>
-            <p className="text-sm text-slate-400 leading-relaxed">
+            <h3 className="text-lg font-semibold theme-text-heading mb-2">Continuous Learning & Growth</h3>
+            <p className="text-sm theme-text-secondary leading-relaxed">
               Always exploring new technologies and frameworks to stay at the forefront of web development
               and artificial intelligence. Currently diving deep into advanced ML algorithms and cloud architecture.
             </p>

@@ -1,4 +1,5 @@
-import { Github, Linkedin, Mail, ArrowRight, Download, Code, Zap } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowRight, Download, Code, Zap, ExternalLink } from "lucide-react";
+import { SiLeetcode } from "react-icons/si";
 import { motion } from "framer-motion";
 import profileImage from "../assets/aakash.jpg";
 
@@ -16,7 +17,7 @@ const Hero = () => {
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
-            backgroundImage: "radial-gradient(circle, #94a3b8 1px, transparent 1px)",
+            backgroundImage: `radial-gradient(circle, var(--dot-color) 1px, transparent 1px)`,
             backgroundSize: "32px 32px",
           }}
         />
@@ -48,7 +49,7 @@ const Hero = () => {
           <div>
             {/* Name */}
             <motion.h1
-              className="text-5xl sm:text-6xl lg:text-[4.5rem] font-extrabold leading-[1.05] tracking-tight mb-2"
+              className="text-5xl sm:text-6xl lg:text-[4.5rem] font-extrabold leading-[1.05] tracking-tight mb-2 theme-text-heading"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
@@ -71,19 +72,19 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800/50 border border-slate-700/30">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg theme-bg-badge" style={{ border: "1px solid var(--border-tag)" }}>
                 <Code size={14} className="text-cyan-400" />
-                <span className="text-sm font-medium text-slate-300">Full Stack Developer</span>
+                <span className="text-sm font-medium theme-text-secondary">Full Stack Developer</span>
               </div>
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800/50 border border-slate-700/30">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg theme-bg-badge" style={{ border: "1px solid var(--border-tag)" }}>
                 <Zap size={14} className="text-orange-400" />
-                <span className="text-sm font-medium text-slate-300">AI Builder</span>
+                <span className="text-sm font-medium theme-text-secondary">AI Builder</span>
               </div>
             </motion.div>
 
             {/* Description */}
             <motion.p
-              className="text-base text-slate-500 leading-relaxed mb-10 max-w-lg"
+              className="text-base theme-text-muted leading-relaxed mb-10 max-w-lg"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.25 }}
@@ -106,7 +107,7 @@ const Hero = () => {
                 Let's Talk
               </a>
               <a href="/resume.pdf" download className="btn-glow btn-glow-outline">
-                <Download size={15} /> Resume
+                <Download size={15} />Resume
               </a>
             </motion.div>
 
@@ -127,13 +128,38 @@ const Hero = () => {
                   href={href}
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="p-2.5 rounded-xl bg-slate-900/50 border border-slate-800/40 text-slate-500 hover:text-cyan-400 hover:border-cyan-500/30 transition-all duration-300"
+                  className="p-2.5 rounded-xl theme-bg-badge theme-text-muted hover:text-cyan-400 transition-all duration-300"
+                  style={{ border: "1px solid var(--border-primary)" }}
                   aria-label={label}
                   whileHover={{ y: -3, scale: 1.1 }}
                 >
                   <Icon size={18} />
                 </motion.a>
               ))}
+              {/* LeetCode */}
+              <motion.a
+                href="https://leetcode.com/u/aakashdeepyadav/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-xl theme-bg-badge theme-text-muted hover:text-amber-400 transition-all duration-300"
+                style={{ border: "1px solid var(--border-primary)" }}
+                aria-label="LeetCode"
+                whileHover={{ y: -3, scale: 1.1 }}
+              >
+                <SiLeetcode size={18} />
+              </motion.a>
+              {/* Codolio */}
+              <motion.a
+                href="https://codolio.com/profile/aakashdeepyadav"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-xl theme-bg-badge theme-text-muted hover:text-emerald-400 transition-all duration-300"
+                style={{ border: "1px solid var(--border-primary)" }}
+                aria-label="Codolio"
+                whileHover={{ y: -3, scale: 1.1 }}
+              >
+                <ExternalLink size={18} />
+              </motion.a>
             </motion.div>
           </div>
 
@@ -147,7 +173,8 @@ const Hero = () => {
             <div className="relative animate-float">
               {/* Outer ring decoration */}
               <motion.div
-                className="absolute -inset-8 rounded-full border border-dashed border-slate-700/20"
+                className="absolute -inset-8 rounded-full border border-dashed"
+                style={{ borderColor: "var(--border-tag)" }}
                 animate={{ rotate: 360 }}
                 transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
               />
@@ -161,7 +188,7 @@ const Hero = () => {
               />
 
               {/* Image */}
-              <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[22rem] lg:h-[22rem] rounded-full overflow-hidden border-2 border-slate-700/50 shadow-2xl">
+              <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[22rem] lg:h-[22rem] rounded-full overflow-hidden border-2 shadow-2xl" style={{ borderColor: "var(--border-tag)" }}>
                 <img src={profileImage} alt="Aakash Deep Yadav" className="w-full h-full object-cover" />
               </div>
 
@@ -174,7 +201,7 @@ const Hero = () => {
                 transition={{ delay: 0.8 }}
               >
                 <span className="w-2.5 h-2.5 bg-emerald-400 rounded-full animate-pulse" />
-                <span className="text-sm font-medium text-slate-300">Open to work</span>
+                <span className="text-sm font-medium theme-text-secondary">Open to work</span>
               </motion.div>
 
               {/* Floating tech badge */}
@@ -212,7 +239,7 @@ const Hero = () => {
               >
                 <span className="text-2xl mb-2 block">{s.icon}</span>
                 <div className="text-3xl font-bold grad-text">{s.val}</div>
-                <div className="text-sm text-slate-500 mt-1">{s.label}</div>
+                <div className="text-sm theme-text-muted mt-1">{s.label}</div>
               </motion.div>
             ))}
           </div>
@@ -227,12 +254,12 @@ const Hero = () => {
         transition={{ delay: 1.2 }}
       >
         <motion.div
-          className="flex flex-col items-center gap-2 text-slate-600"
+          className="flex flex-col items-center gap-2 theme-text-faint"
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
           <span className="text-xs tracking-wider uppercase">Scroll</span>
-          <div className="w-5 h-8 border border-slate-700/40 rounded-full flex justify-center pt-1.5">
+          <div className="w-5 h-8 rounded-full flex justify-center pt-1.5" style={{ border: "1px solid var(--border-tag)" }}>
             <motion.div
               className="w-1 h-2 bg-cyan-400/60 rounded-full"
               animate={{ y: [0, 8, 0], opacity: [1, 0.3, 1] }}

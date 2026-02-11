@@ -24,7 +24,7 @@ const About = () => {
         <div
           className="absolute inset-0 opacity-[0.02]"
           style={{
-            backgroundImage: "radial-gradient(circle, #94a3b8 1px, transparent 1px)",
+            backgroundImage: `radial-gradient(circle, var(--dot-color) 1px, transparent 1px)`,
             backgroundSize: "40px 40px",
           }}
         />
@@ -39,19 +39,19 @@ const About = () => {
             </div>
             <p className="text-cyan-400 font-semibold text-sm tracking-[0.2em] uppercase">About</p>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white">Who I Am</h2>
+          <h2 className="text-4xl sm:text-5xl font-bold theme-text-heading">Who I Am</h2>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Left - Story */}
           <motion.div {...fadeUp(0.1)}>
             <div className="space-y-5 mb-10">
-              <p className="text-slate-400 leading-relaxed">
+              <p className="theme-text-secondary leading-relaxed">
                 I'm a Computer Science student at Lovely Professional University with a passion for
                 building innovative solutions. My journey in tech started with curiosity and has evolved
                 into a deep commitment to creating impactful software.
               </p>
-              <p className="text-slate-400 leading-relaxed">
+              <p className="theme-text-secondary leading-relaxed">
                 I specialize in full-stack development and machine learning, combining these skills
                 to build intelligent, scalable applications — from e-commerce platforms to AI-powered
                 systems.
@@ -72,8 +72,8 @@ const About = () => {
                   whileHover={{ scale: 1.03 }}
                 >
                   <span className="text-xl mb-2 block">{s.icon}</span>
-                  <div className="text-2xl font-bold text-cyan-400 group-hover:text-white transition-colors">{s.val}</div>
-                  <div className="text-xs text-slate-500 mt-1">{s.label}</div>
+                  <div className="text-2xl font-bold text-cyan-400 group-hover:theme-text-heading transition-colors">{s.val}</div>
+                  <div className="text-xs theme-text-muted mt-1">{s.label}</div>
                 </motion.div>
               ))}
             </div>
@@ -103,12 +103,12 @@ const About = () => {
                       >
                         <Icon size={18} style={{ color: skill.color }} />
                       </div>
-                      <span className="font-medium text-sm text-slate-200 flex-1">{skill.name}</span>
-                      <span className="text-xs font-mono px-2 py-0.5 rounded-md bg-slate-800/60 border border-slate-700/30" style={{ color: skill.color }}>
+                      <span className="font-medium text-sm theme-text-primary flex-1">{skill.name}</span>
+                      <span className="text-xs font-mono px-2 py-0.5 rounded-md theme-bg-tag theme-border-tag" style={{ color: skill.color, borderWidth: 1 }}>
                         {skill.pct}%
                       </span>
                     </div>
-                    <div className="h-2 bg-slate-800/80 rounded-full overflow-hidden">
+                    <div className="h-2 rounded-full overflow-hidden" style={{ backgroundColor: "var(--progress-bar-bg)" }}>
                       <motion.div
                         className="h-full rounded-full relative"
                         style={{
@@ -128,7 +128,7 @@ const About = () => {
 
             {/* Extra */}
             <motion.div {...fadeUp(0.5)} className="glass-card p-6 mt-10">
-              <h4 className="font-semibold text-sm text-white mb-4 flex items-center gap-2">
+              <h4 className="font-semibold text-sm theme-text-heading mb-4 flex items-center gap-2">
                 <span className="text-lg">✨</span> What I Bring
               </h4>
               <ul className="space-y-3">
@@ -138,7 +138,7 @@ const About = () => {
                   "Passion for clean code and best practices",
                   "Quick learner with strong problem-solving skills",
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm text-slate-400">
+                  <li key={i} className="flex items-start gap-3 text-sm theme-text-secondary">
                     <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full mt-[7px] flex-shrink-0" />
                     {item}
                   </li>
