@@ -21,8 +21,7 @@ const Hero = () => {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ backgroundColor: "var(--bg-primary)" }}
     >
-      {/* About nav anchor */}
-      <div id="about" className="absolute top-0" aria-hidden="true" />
+
 
       <div className="wrapper w-full">
         <div className="flex flex-col lg:flex-row items-center gap-14 lg:gap-20 py-28 lg:py-0">
@@ -158,7 +157,7 @@ const Hero = () => {
 
       {/* Scroll indicator */}
       <motion.a
-        href="#skills"
+        href="#about"
         className="absolute bottom-8 left-1/2 -translate-x-1/2 theme-text-faint hover:text-cyan-400 transition-colors"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

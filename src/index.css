@@ -120,6 +120,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    cursor: none;
     transition:
       background-color 0.3s ease,
       color 0.3s ease;
@@ -385,4 +386,98 @@
   h2 {
     font-size: 2rem !important;
   }
+}
+
+/* ============================================
+   CUSTOM CURSOR
+   ============================================ */
+.custom-cursor-dot {
+  position: fixed;
+  top: -4px;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  background: #00b4d8;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+  transition: width 0.15s ease, height 0.15s ease, opacity 0.2s ease;
+}
+
+.custom-cursor-ring {
+  position: fixed;
+  top: -18px;
+  left: -18px;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(0, 180, 216, 0.35);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  will-change: transform;
+  transition:
+    width 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    height 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    opacity 0.2s ease;
+}
+
+/* Hide custom cursor on links and buttons natively */
+a, button, [role='button'], input, textarea, select {
+  cursor: none !important;
+}
+
+/* Disable custom cursor on touch devices / small screens */
+@media (hover: none), (max-width: 768px) {
+  body {
+    cursor: auto !important;
+  }
+
+  a, button, [role='button'], input, textarea, select {
+    cursor: auto !important;
+  }
+
+  .custom-cursor-dot,
+  .custom-cursor-ring {
+    display: none !important;
+  }
+}
+
+/* ============================================
+   ENHANCED HOVER EFFECTS
+   ============================================ */
+.glass-card {
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.glass-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 180, 216, 0.04);
+}
+
+.glow-card {
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.glow-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 180, 216, 0.04);
+}
+
+/* Smooth link underline animations */
+a {
+  transition: color 0.2s ease;
+}
+
+/* Button press feedback */
+.btn-solid:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-outline:active {
+  transform: scale(0.98);
 }
