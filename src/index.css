@@ -1,0 +1,388 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+@import "tailwindcss";
+
+/* ============================================
+   THEME VARIABLES
+   ============================================ */
+:root {
+  /* Backgrounds */
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #0f172a;
+  --bg-card: rgba(15, 23, 42, 0.8);
+  --bg-card-alt: rgba(15, 23, 42, 0.4);
+  --bg-input: rgba(15, 23, 42, 0.6);
+  --bg-badge: rgba(15, 23, 42, 0.5);
+  --bg-tag: rgba(30, 41, 59, 0.6);
+  --cert-date-bg: rgba(2, 6, 23, 0.72);
+  --bg-footer: #060609;
+
+  /* Text */
+  --text-primary: #e2e8f0;
+  --text-heading: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --cert-date-text: #ffffff;
+  --text-faint: #475569;
+
+  /* Borders */
+  --border-primary: rgba(148, 163, 184, 0.08);
+  --border-secondary: rgba(148, 163, 184, 0.15);
+  --border-tag: rgba(51, 65, 85, 0.3);
+  --cert-date-border: rgba(148, 163, 184, 0.35);
+  --border-hover: rgba(0, 180, 216, 0.3);
+
+  /* Cards */
+  --glass-bg: var(--bg-secondary);
+  --glow-card-bg: #0f172a;
+  --glow-border: rgba(148, 163, 184, 0.12);
+
+  /* Scrollbar */
+  --scrollbar-track: #0a0a0f;
+  --scrollbar-thumb: #1e293b;
+  --scrollbar-hover: #334155;
+
+  /* Misc */
+  --selection-bg: rgba(0, 217, 255, 0.25);
+  --cert-date-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+  --dot-color: #94a3b8;
+  --nav-scrolled-bg: rgba(10, 10, 15, 0.85);
+  --mobile-menu-bg: rgba(15, 23, 42, 0.95);
+  --progress-bar-bg: rgba(30, 41, 59, 0.8);
+  --timeline-dot-border: #0a0a0f;
+  --section-divider: rgba(148, 163, 184, 0.06);
+}
+
+.light-theme {
+  /* Backgrounds */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-card-alt: rgba(241, 245, 249, 0.6);
+  --bg-input: rgba(241, 245, 249, 0.8);
+  --bg-badge: rgba(241, 245, 249, 0.8);
+  --bg-tag: rgba(226, 232, 240, 0.6);
+  --cert-date-bg: var(--bg-tag);
+  --bg-footer: #f1f5f9;
+
+  /* Text */
+  --text-primary: #1e293b;
+  --text-heading: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --cert-date-text: var(--text-muted);
+  --text-faint: #94a3b8;
+
+  /* Borders */
+  --border-primary: rgba(148, 163, 184, 0.2);
+  --border-secondary: rgba(148, 163, 184, 0.3);
+  --border-tag: rgba(203, 213, 225, 0.5);
+  --cert-date-border: var(--border-tag);
+  --border-hover: rgba(0, 180, 216, 0.25);
+
+  /* Cards */
+  --glass-bg: var(--bg-secondary);
+  --glow-card-bg: #ffffff;
+  --glow-border: rgba(148, 163, 184, 0.2);
+
+  /* Scrollbar */
+  --scrollbar-track: #f1f5f9;
+  --scrollbar-thumb: #cbd5e1;
+  --scrollbar-hover: #94a3b8;
+
+  /* Misc */
+  --selection-bg: rgba(0, 180, 216, 0.2);
+  --cert-date-shadow: none;
+  --dot-color: #cbd5e1;
+  --nav-scrolled-bg: rgba(248, 250, 252, 0.9);
+  --mobile-menu-bg: rgba(255, 255, 255, 0.97);
+  --progress-bar-bg: rgba(226, 232, 240, 0.8);
+  --timeline-dot-border: #f8fafc;
+  --section-divider: rgba(148, 163, 184, 0.12);
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      system-ui,
+      sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 99px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-hover);
+  }
+
+  ::selection {
+    background: var(--selection-bg);
+    color: var(--text-heading);
+  }
+}
+
+/* ============================================
+   CUSTOM UTILITIES
+   ============================================ */
+@layer utilities {
+  /* ── Layout Wrapper ────────────────────── */
+  .wrapper {
+    width: 100%;
+    max-width: 1120px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .wrapper {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .wrapper {
+      padding-left: 3.5rem;
+      padding-right: 3.5rem;
+    }
+  }
+
+  /* ── Theme Text Utilities ──────────────── */
+  .theme-text-heading {
+    color: var(--text-heading);
+  }
+
+  .theme-text-primary {
+    color: var(--text-primary);
+  }
+
+  .theme-text-secondary {
+    color: var(--text-secondary);
+  }
+
+  .theme-text-muted {
+    color: var(--text-muted);
+  }
+
+  .theme-text-faint {
+    color: var(--text-faint);
+  }
+
+  .theme-bg-primary {
+    background-color: var(--bg-primary);
+  }
+
+  .theme-bg-secondary {
+    background-color: var(--bg-secondary);
+  }
+
+  .theme-bg-tag {
+    background-color: var(--bg-tag);
+  }
+
+  .theme-bg-badge {
+    background-color: var(--bg-badge);
+  }
+
+  .theme-border {
+    border-color: var(--border-primary);
+  }
+
+  .theme-border-tag {
+    border-color: var(--border-tag);
+  }
+
+  .theme-logo {
+    transition: filter 0.3s ease;
+  }
+
+  .light-theme .theme-logo {
+    filter: brightness(0) saturate(100%);
+  }
+
+  /* ── Section Divider ───────────────────── */
+  .section-divider {
+    border-top: 1px solid var(--section-divider);
+  }
+}
+
+/* ============================================
+   COMPONENT STYLES
+   ============================================ */
+
+/* ── Glass Card ──────────────────────────── */
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  transition: border-color 0.25s ease;
+}
+
+.glass-card:hover {
+  border-color: var(--border-hover);
+}
+
+/* ── Glow Card (simple bordered card) ────── */
+.glow-card {
+  position: relative;
+  background: var(--glow-card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--glow-border);
+  overflow: hidden;
+  transition: border-color 0.25s ease;
+}
+
+.glow-card:hover {
+  border-color: var(--border-hover);
+}
+
+/* ── Buttons ─────────────────────────────── */
+.btn-solid {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  background: #00b4d8;
+  color: #020617;
+}
+
+.btn-solid:hover {
+  background: #00d4ff;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  background: var(--bg-input);
+  color: var(--text-primary);
+  border: 1px solid var(--border-secondary);
+}
+
+.btn-outline:hover {
+  border-color: #00b4d8;
+  color: #00b4d8;
+}
+
+/* Keep old button classes for backward compat */
+.btn-glow {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-glow-primary {
+  background: #00b4d8;
+  color: #020617;
+}
+
+.btn-glow-primary:hover {
+  background: #00d4ff;
+  transform: translateY(-1px);
+}
+
+.btn-glow-outline {
+  background: var(--bg-input);
+  color: var(--text-primary);
+  border: 1px solid var(--border-secondary);
+}
+
+.btn-glow-outline:hover {
+  border-color: #00b4d8;
+  color: #00b4d8;
+}
+
+/* ── Skill Icon ──────────────────────────── */
+.skill-icon {
+  transition: all 0.2s ease;
+}
+
+.skill-icon:hover {
+  transform: translateY(-2px);
+}
+
+/* ── Form Inputs ─────────────────────────── */
+.input-glow {
+  background: var(--bg-input);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  padding: 14px 18px;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 14px;
+  width: 100%;
+  transition: border-color 0.2s ease;
+  outline: none;
+}
+
+.input-glow::placeholder {
+  color: var(--text-faint);
+}
+
+.input-glow:focus {
+  border-color: #00b4d8;
+}
+
+/* ── Responsive Typography ───────────────── */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem !important;
+  }
+
+  h2 {
+    font-size: 2rem !important;
+  }
+}
