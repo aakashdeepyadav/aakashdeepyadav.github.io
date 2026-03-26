@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Code2, Brain, Rocket, Users, GitBranch, Server } from "lucide-react";
+import TiltCard from "./TiltCard";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 } as const,
@@ -82,38 +83,26 @@ const About = () => {
           </h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {strengths.map((item, i) => (
-              <motion.div
-                key={i}
-                {...fadeUp(0.14 + i * 0.04)}
-                className="group p-4 rounded-xl transition-all duration-300"
-                style={{
-                  background: "var(--bg-card-alt)",
-                  border: "1px solid var(--border-primary)",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(0, 180, 216, 0.3)";
-                  e.currentTarget.style.boxShadow = "0 4px 24px rgba(0, 180, 216, 0.06)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "var(--border-primary)";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
-              >
-                <div
-                  className="w-9 h-9 rounded-lg flex items-center justify-center mb-3"
-                  style={{
-                    background: "rgba(0, 180, 216, 0.08)",
-                    color: "#00b4d8",
-                  }}
+              <motion.div key={i} {...fadeUp(0.14 + i * 0.04)}>
+                <TiltCard
+                  className="glass-card p-4 h-full"
                 >
-                  {item.icon}
-                </div>
-                <h4 className="text-[13px] font-bold theme-text-heading mb-1">
-                  {item.title}
-                </h4>
-                <p className="text-xs theme-text-muted leading-relaxed">
-                  {item.desc}
-                </p>
+                  <div
+                    className="w-9 h-9 rounded-lg flex items-center justify-center mb-3"
+                    style={{
+                      background: "rgba(0, 180, 216, 0.08)",
+                      color: "#00b4d8",
+                    }}
+                  >
+                    {item.icon}
+                  </div>
+                  <h4 className="text-[13px] font-bold theme-text-heading mb-1">
+                    {item.title}
+                  </h4>
+                  <p className="text-xs theme-text-muted leading-relaxed">
+                    {item.desc}
+                  </p>
+                </TiltCard>
               </motion.div>
             ))}
           </div>

@@ -1,5 +1,6 @@
 import { Trophy, Zap, Code, Medal } from "lucide-react";
 import { motion } from "framer-motion";
+import TiltCard from "./TiltCard";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 20 } as const,
@@ -50,7 +51,7 @@ const Achievements = () => (
       <div className="grid md:grid-cols-2 gap-6">
         {achievements.map((a, i) => (
           <motion.div key={i} {...fadeUp(i * 0.08)}>
-            <div className="glass-card p-6 h-full">
+            <TiltCard className="glass-card p-6 h-full">
               <div className="flex items-start gap-5">
                 <div
                   className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -80,7 +81,7 @@ const Achievements = () => (
                   </div>
                 </div>
               </div>
-            </div>
+            </TiltCard>
           </motion.div>
         ))}
       </div>

@@ -126,6 +126,29 @@
       color 0.3s ease;
   }
 
+  /* Subtle dot grid background */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: radial-gradient(
+      circle,
+      rgba(148, 163, 184, 0.07) 1px,
+      transparent 1px
+    );
+    background-size: 32px 32px;
+  }
+
+  .light-theme body::before {
+    background-image: radial-gradient(
+      circle,
+      rgba(148, 163, 184, 0.12) 1px,
+      transparent 1px
+    );
+  }
+
   ::-webkit-scrollbar {
     width: 6px;
   }
@@ -378,6 +401,254 @@
 }
 
 /* ── Responsive Typography ───────────────── */
+/* ============================================
+   BACKGROUND AMBIENT GLOWS
+   ============================================ */
+
+/* Hero ambient glow — top right (pulsing) */
+#home::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 180, 216, 0.06) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+  animation: pulseGlow 8s ease-in-out infinite;
+}
+
+/* Hero — bottom-left secondary glow */
+#home::after {
+  content: "";
+  position: absolute;
+  bottom: -100px;
+  left: -60px;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 119, 182, 0.04) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* About ambient glow — bottom left */
+#about::before {
+  content: "";
+  position: absolute;
+  bottom: -60px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 119, 182, 0.05) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* About — top-right accent */
+#about::after {
+  content: "";
+  position: absolute;
+  top: 40px;
+  right: -60px;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 180, 216, 0.03) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Skills ambient glow — center right */
+#skills::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -80px;
+  transform: translateY(-50%);
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 180, 216, 0.04) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Projects — top-left glow */
+#projects::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: -120px;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 180, 216, 0.05) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+  animation: pulseGlow 10s ease-in-out infinite 2s;
+}
+
+/* Certificates — bottom-right glow */
+#certificates::before {
+  content: "";
+  position: absolute;
+  bottom: -80px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 119, 182, 0.05) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Certificates — top-left secondary */
+#certificates::after {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: -60px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 180, 216, 0.03) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Achievements — top-right glow */
+#achievements::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -80px;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 180, 216, 0.04) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Contact — center-left glow */
+#contact::before {
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 119, 182, 0.05) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+  animation: pulseGlow 12s ease-in-out infinite 4s;
+}
+
+/* Contact — bottom-right accent */
+#contact::after {
+  content: "";
+  position: absolute;
+  bottom: -60px;
+  right: -40px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 180, 216, 0.03) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle pulsing animation for select glows */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.15);
+  }
+}
+
+/* Light theme — dim all glows further */
+.light-theme #home::before,
+.light-theme #home::after,
+.light-theme #about::before,
+.light-theme #about::after,
+.light-theme #skills::after,
+.light-theme #projects::before,
+.light-theme #certificates::before,
+.light-theme #certificates::after,
+.light-theme #achievements::before,
+.light-theme #contact::before,
+.light-theme #contact::after {
+  opacity: 0.5;
+}
+
+/* ============================================
+   TILT CARD BASE
+   ============================================ */
+.tilt-card {
+  position: relative;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+@media (hover: none) {
+  .tilt-card {
+    transform: none !important;
+  }
+}
+
 @media (max-width: 768px) {
   h1 {
     font-size: 2.5rem !important;
