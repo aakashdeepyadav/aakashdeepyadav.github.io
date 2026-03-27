@@ -33,7 +33,7 @@ const strengths = [
   {
     icon: <Rocket size={18} />,
     title: "Problem Solving",
-    desc: "100+ DSA problems on LeetCode. Comfortable taking a feature from idea to production.",
+    desc: "150+ DSA problems on LeetCode. Comfortable taking a feature from idea to production.",
   },
   {
     icon: <Users size={18} />,
