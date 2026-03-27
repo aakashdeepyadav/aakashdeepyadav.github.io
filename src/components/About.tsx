@@ -62,8 +62,8 @@ const About = () => {
         {/* Bio */}
         <motion.div {...fadeUp(0.08)} className="max-w-3xl space-y-3 mb-10">
           <p className="theme-text-secondary leading-relaxed text-[15px]">
-            I'm a Computer Science student at Lovely Professional University who loves
-            digging into how things work under the hood — from how databases index queries
+            I'm a Computer Science graduate and full-stack developer who loves
+            digging into how things work under the hood, from how databases index queries
             to how React reconciles the DOM. I spend most of my time building web apps,
             training ML models, and lately, experimenting with LLM-powered agents that can
             call tools and handle multi-step tasks.
