@@ -11,7 +11,7 @@ const fadeUp = (delay = 0) => ({
 
 const achievements = [
   {
-    title: "100+ LeetCode Problems Solved",
+    title: "150+ LeetCode Problems Solved",
     desc: "Practicing core patterns — two-pointer, sliding window, BFS/DFS, backtracking, and DP. Trying to solve something every day.",
     tags: ["Arrays", "Strings", "Recursion", "Hashing", "DP"],
     icon: <Trophy size={20} />,
@@ -37,11 +37,16 @@ const achievements = [
 ];
 
 const Achievements = () => (
-  <section id="achievements" className="relative py-28 section-divider overflow-hidden">
+  <section
+    id="achievements"
+    className="relative py-28 section-divider overflow-hidden"
+  >
     <div className="wrapper relative z-10">
       {/* Header */}
       <motion.div {...fadeUp()} className="mb-16">
-        <h2 className="text-3xl sm:text-4xl font-bold theme-text-heading mb-3">Milestones</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold theme-text-heading mb-3">
+          Milestones
+        </h2>
         <p className="theme-text-muted text-base max-w-xl">
           Some things I'm proud of
         </p>
@@ -67,7 +72,9 @@ const Achievements = () => (
                   <h3 className="font-bold theme-text-heading mb-2">
                     {a.title}
                   </h3>
-                  <p className="text-sm theme-text-muted leading-relaxed mb-4">{a.desc}</p>
+                  <p className="text-sm theme-text-muted leading-relaxed mb-4">
+                    {a.desc}
+                  </p>
                   <div className="flex flex-wrap gap-1.5">
                     {a.tags.map((t) => (
                       <span
